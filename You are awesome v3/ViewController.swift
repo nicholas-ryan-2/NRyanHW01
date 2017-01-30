@@ -48,6 +48,14 @@ class ViewController: UIViewController {
         }
         lastSound = soundName
     }
+    func repeatedRandom(last : inout Int, range: Int) -> Int {
+        var random: Int = Int(arc4random_uniform(UInt32(range)))
+        repeat {
+            random = Int(arc4random_uniform(UInt32(range)))
+        } while random == last
+        last = random
+        return random
+    }
     @IBAction func messageButton(_ sender: UIButton) {
         let messages = ["You are amazing!",
                         "You are great!",
@@ -55,21 +63,12 @@ class ViewController: UIViewController {
                         "You are wonderful!"]
             imageDisplay.isHidden = false
                 let numImages = 3
-        var randomIndex : Int = Int(arc4random_uniform(UInt32(messages.count)))
-        var imageRandomIndex = Int(arc4random_uniform(UInt32(numImages)))
-        repeat {
-            print("Before condition: My new randomIndex is \(randomIndex) and lastIndex is \(lastIndex)")
-            randomIndex = Int(arc4random_uniform(UInt32(messages.count)))
-            print("After condition: My new randomIndex is \(randomIndex) and lastIndex is \(lastIndex)")
-        } while randomIndex == lastIndex
-        repeat {
-            imageRandomIndex = Int(arc4random_uniform(UInt32(numImages)))
-        } while imageRandomIndex == lastImageIndex
-        lastIndex = randomIndex
-        lastImageIndex = imageRandomIndex
-        messageLabel.text = messages[randomIndex]
-        imageDisplay.image = UIImage(named: "image" + String(imageRandomIndex))
+        var random = repeatedRandom(last: &lastIndex, range: messages.count)
+        messageLabel.text = messages[random]
+        random = repeatedRandom(last: &lastImageIndex, range: numImages)
+        imageDisplay.image = UIImage(named: "image" + String(random))
         playSound()
+        //in trying to add a parameter to the playSound() function, everything broke and randomizing the function made things worse. For now, I've left the function without a parameter and I'll fix it eventually.
 }
 }
 //method 1 for loop
