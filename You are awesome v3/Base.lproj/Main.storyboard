@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,37 +22,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJ4-4x-uEt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJ4-4x-uEt">
                                 <rect key="frame" x="30" y="139" width="316" height="101"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image0" translatesAutoresizingMaskIntoConstraints="NO" id="On6-jM-g2u">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image0" translatesAutoresizingMaskIntoConstraints="NO" id="On6-jM-g2u">
                                 <rect key="frame" x="16" y="216" width="343" height="421"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1b1-Az-Wh4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1b1-Az-Wh4">
                                 <rect key="frame" x="135" y="139" width="104" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="adj-jd-se3"/>
+                                </constraints>
                                 <state key="normal" title="Show Message"/>
                                 <connections>
                                     <action selector="messageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nr0-vT-PF8"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Sounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovb-8t-lxd">
+                                <rect key="frame" x="95" y="15" width="94" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qFT-1L-rCl">
+                                <rect key="frame" x="30" y="10" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchOff:" destination="BYZ-38-t0r" eventType="valueChanged" id="YaV-vA-VwG"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IJ4-4x-uEt" secondAttribute="bottom" constant="427" id="0OA-lC-79a"/>
+                            <constraint firstItem="On6-jM-g2u" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="1Bo-1I-099"/>
+                            <constraint firstItem="ovb-8t-lxd" firstAttribute="leading" secondItem="qFT-1L-rCl" secondAttribute="trailing" constant="16" id="1qH-BE-O0F"/>
+                            <constraint firstItem="qFT-1L-rCl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="14" id="72C-CS-QZ9"/>
+                            <constraint firstItem="qFT-1L-rCl" firstAttribute="leading" secondItem="IJ4-4x-uEt" secondAttribute="leading" id="Ans-xb-lzF"/>
+                            <constraint firstItem="On6-jM-g2u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="H4j-r2-0Af"/>
+                            <constraint firstItem="qFT-1L-rCl" firstAttribute="centerY" secondItem="ovb-8t-lxd" secondAttribute="centerY" id="JXc-cP-zaR"/>
+                            <constraint firstItem="IJ4-4x-uEt" firstAttribute="top" secondItem="1b1-Az-Wh4" secondAttribute="top" id="Lm6-cm-YeV"/>
+                            <constraint firstItem="IJ4-4x-uEt" firstAttribute="top" secondItem="qFT-1L-rCl" secondAttribute="bottom" constant="98" id="NDy-Vc-ybl"/>
+                            <constraint firstItem="IJ4-4x-uEt" firstAttribute="centerX" secondItem="On6-jM-g2u" secondAttribute="centerX" id="RGZ-kk-7NJ"/>
+                            <constraint firstItem="On6-jM-g2u" firstAttribute="top" secondItem="1b1-Az-Wh4" secondAttribute="bottom" constant="47" id="WtJ-uJ-Hh1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="On6-jM-g2u" secondAttribute="bottom" constant="30" id="XRY-NF-wg1"/>
+                            <constraint firstItem="qFT-1L-rCl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="10" id="YCV-0M-DLm"/>
+                            <constraint firstItem="1b1-Az-Wh4" firstAttribute="centerX" secondItem="On6-jM-g2u" secondAttribute="centerX" id="tkC-gb-XQs"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imageDisplay" destination="On6-jM-g2u" id="eLn-lX-tbv"/>
                         <outlet property="messageButton" destination="1b1-Az-Wh4" id="Oq9-bV-bR1"/>
                         <outlet property="messageLabel" destination="IJ4-4x-uEt" id="we0-dy-ewN"/>
+                        <outlet property="playSoundSwitch" destination="qFT-1L-rCl" id="8ar-Y1-871"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-79.200000000000003" y="138.98050974512745"/>
+            <point key="canvasLocation" x="-97" y="130"/>
         </scene>
     </scenes>
     <resources>

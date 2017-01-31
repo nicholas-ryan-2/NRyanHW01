@@ -146,6 +146,7 @@
 				TargetAttributes = {
 					48D81F381E35DC9F009A09AB = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 324S7VQQ22;
 						ProvisioningStyle = Automatic;
 					};
 					48D81F4C1E35DCA0009A09AB = {
@@ -339,7 +340,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 324S7VQQ22;
 				INFOPLIST_FILE = "You are awesome v3/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Nick-Ryan.You-are-awesome-v3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -351,7 +354,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 324S7VQQ22;
 				INFOPLIST_FILE = "You are awesome v3/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Nick-Ryan.You-are-awesome-v3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -406,6 +411,7 @@
 				48D81F581E35DCA0009A09AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		48D81F591E35DCA0009A09AB /* Build configuration list for PBXNativeTarget "You are awesome v3Tests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +420,7 @@
 				48D81F5B1E35DCA0009A09AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

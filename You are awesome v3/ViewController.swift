@@ -12,6 +12,7 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var playSoundSwitch: UISwitch!
     @IBOutlet weak var imageDisplay: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var messageButton: UIButton!
@@ -26,28 +27,37 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    var lastIndex: Int = -1
+    var lastMessageIndex: Int = -1
     var lastImageIndex : Int = -1
     let numSounds = 5
     var soundPlayer = AVAudioPlayer()
-    var lastSound = String(-1)
+    var lastSound = -1
     var soundName = -1
+    let numImages = 3
+    var soundOn = true
     
-    func playSound() {
-        var soundName = "sound" + String(arc4random_uniform(UInt32(numSounds)))
-        if let sound = NSDataAsset(name: soundName) {
-            //play
-            do {
-                try soundPlayer = AVAudioPlayer(data: sound.data)
-                soundPlayer.play()
-            } catch {
-                print("ERROR: File \(soundName) is not a usable sound")
+    func playSound(soundName: String) {
+            if let sound = NSDataAsset(name: soundName) {
+                //play
+                do {
+                    try soundPlayer = AVAudioPlayer(data: sound.data)
+                    soundPlayer.play()
+                    }
+                    catch {
+                    print("ERROR: File \(soundName) is not a usable sound")
+                }
+            } else {
+                print("ERROR: File \(soundName) could not load.")
             }
-        } else {
-            print("ERROR: File \(soundName) could not load.")
         }
-        lastSound = soundName
+    
+    @IBAction func switchOff(_ sender: UISwitch) {
+        if playSoundSwitch.isOn == true && lastSound != -1 {
+            soundPlayer.stop()
+        }
     }
+
+    
     func repeatedRandom(last : inout Int, range: Int) -> Int {
         var random: Int = Int(arc4random_uniform(UInt32(range)))
         repeat {
@@ -62,13 +72,50 @@ class ViewController: UIViewController {
                         "You are perfect!",
                         "You are wonderful!"]
             imageDisplay.isHidden = false
-                let numImages = 3
-        var random = repeatedRandom(last: &lastIndex, range: messages.count)
-        messageLabel.text = messages[random]
-        random = repeatedRandom(last: &lastImageIndex, range: numImages)
-        imageDisplay.image = UIImage(named: "image" + String(random))
-        playSound()
-        //in trying to add a parameter to the playSound() function, everything broke and randomizing the function made things worse. For now, I've left the function without a parameter and I'll fix it eventually.
+        //var randomMessageIndex = repeatedRandom(last: &lastIndex, range: messages.count)
+        
+        //assigning original random values
+        var randomSound = Int(arc4random_uniform(UInt32(numSounds)))
+        var randomImageIndex = Int(arc4random_uniform(UInt32(numImages)))
+        var randomMessageIndex = Int(arc4random_uniform(UInt32(messages.count)))
+        
+        
+        //checking repeating for messages
+        /*while Int(lastMessageIndex) == Int(randomMessageIndex) {
+            randomMessageIndex = Int(arc4random_uniform(UInt32(messages.count)))
+        }
+        lastMessageIndex = randomMessageIndex*/
+        randomMessageIndex = repeatedRandom(last: &lastMessageIndex, range: messages.count)
+        randomImageIndex = repeatedRandom(last: &lastImageIndex, range: numImages)
+        randomSound = repeatedRandom(last: &lastSound, range: numSounds)
+        imageDisplay.image = UIImage(named: "image" + String(randomImageIndex))
+        messageLabel.text = messages[randomMessageIndex]
+        if playSoundSwitch.isOn == true {
+            playSound(soundName: "sound" + String(randomSound))
+        }
+
+
+        //checking repeating for images
+        /*while Int(lastImageIndex) == Int(randomImageIndex) {
+            randomImageIndex = Int(arc4random_uniform(UInt32(numImages)))
+        }
+        lastImageIndex = randomImageIndex*/
+        
+        
+        //random = repeatedRandom(last: &lastImageIndex, range: numImages)
+        //imageDisplay.image = UIImage(named: "image" + String(random))
+        
+        //checking repeating for sounds
+        /*while Int(lastSound) == Int(randomSound) {
+            randomSound = Int(arc4random_uniform(UInt32(numSounds)))
+        }
+        lastSound = randomSound*/
+        
+        /*imageDisplay.image = UIImage(named: "image" + String(randomImageIndex))
+        messageLabel.text = messages[randomMessageIndex]
+        playSound(soundName: "sound" + String(randomSound))*/
+
+
 }
 }
 //method 1 for loop
